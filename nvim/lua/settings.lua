@@ -3,6 +3,17 @@ local exec = vim.api.nvim_exec  -- execute Vimscript
 local g = vim.g                 -- global variables
 local opt = vim.opt             -- global/buffer/windows-scoped options
 
+-- Markdown preview
+g.mkdp_open_to_the_world = 1
+g.mkdp_open_ip = '127.0.0.1'
+g.mkdp_port = 8080
+cmd [[
+    function! g:EchoUrl(url)
+        :echo a:url
+    endfunction
+    let g:mkdp_browserfunc = 'g:EchoUrl'
+]]
+
 -- Translate from Russia to English
 g.translate_source = 'ru'
 g.translate_target = 'en'
@@ -42,6 +53,9 @@ cmd [[au BufEnter * set fo-=c fo-=r fo-=o]]
 
 -- 2 spaces for selected filetypes
 cmd [[autocmd FileType xml,css,yml,yaml setlocal shiftwidth=2 tabstop=2]]
+
+-- Tabs instead of spaces for selected filetypes
+cmd [[autocmd FileType go setlocal noexpandtab]]
 
 -----------------------------------------------------------
 -- Usefull
@@ -89,7 +103,7 @@ require('nvim-web-devicons').setup {}
 require('telescope').setup {}
 
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'python', 'lua' },
+    ensure_installed = { 'python', 'lua', 'go' },
     highlight = {
         enable = true,
     },
@@ -133,12 +147,18 @@ lspconfig.pylsp.setup {
             plugins = {
                 flake8 = {
                     enabled = true,
-                    maxLineLength = 200
+                    maxLineLength = 200,
+                    ignore = {'E131', 'E123'}
+                },
+                jedi = {
+                    extra_paths = {}
                 }
             }
         }
     }
 }
+
+lspconfig.gopls.setup {} 
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)

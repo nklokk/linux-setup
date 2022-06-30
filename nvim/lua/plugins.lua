@@ -85,5 +85,8 @@ return require('packer').startup(function()
     -- Translater
     use 'skanehira/translate.vim'
 
+    -- Markdown preview
+    use 'iamcco/markdown-preview.nvim'
+
 end)
 
