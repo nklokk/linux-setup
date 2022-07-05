@@ -12,6 +12,7 @@ return require('packer').startup(function()
     -----------------------------------------------------------
     -- Colorscheme
     use 'morhetz/gruvbox'
+    use 'joshdick/onedark.vim'
 
     -- Information line at the bottom
     use {
@@ -52,6 +53,9 @@ return require('packer').startup(function()
         }
     }
 
+    -- Hop
+    use 'phaazon/hop.nvim'
+
     -----------------------------------------------------------
     -- LSP and auto-completion
     -----------------------------------------------------------
@@ -69,6 +73,9 @@ return require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     -- Snippets plugin
     use 'L3MON4D3/LuaSnip'
+
+    -- Gotests
+    use 'buoto/gotests-vim'
 
     -----------------------------------------------------------
     -- Other

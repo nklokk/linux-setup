@@ -52,4 +52,3 @@ vim.api.nvim_set_keymap('n', '<F6>', '<cmd>NvimTreeToggle<CR>', default_opts)
 
 -- <F8> Tagbar
 vim.api.nvim_set_keymap('n', '<F8>', '<cmd>TagbarToggle<CR>', default_opts)
-
