@@ -14,6 +14,9 @@ return require('packer').startup(function()
     use 'morhetz/gruvbox'
     use 'joshdick/onedark.vim'
 
+    -- Nvim-web-devicons
+    use 'nvim-tree/nvim-web-devicons'
+
     -- Information line at the bottom
     use {
         'nvim-lualine/lualine.nvim',
